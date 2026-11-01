@@ -1,6 +1,18 @@
 # 交接文档 —— GBA AI 项目
 
-## 最新：air-supply-v5，修复非战场界面启动被误拒绝
+## 最新：2026-11-01 公开仓库 + air-supply-v9 整局实战通关
+
+项目已发布到公开仓库 https://github.com/cnjswangyu/gba-ai-daisenryaku （仅源码、文档、精选媒体；ROM、BizHawk、states、logs、shots、unitdb.tsv、units.csv 均未纳入）。根 README 已改写为面向公开读者的版本，旧 README 保存在 docs/LEGACY_README.md。
+
+同日在真实模拟器上完整跑了两次：
+
+- `python tools/play_stage1.py --fast --speed 400`：复用 states/stage1_v2_deployed.State，第 5 回合大勝利，剩 18/20 单位，1772 P（与 docs 里第 3 回合的首次通关是不同一局）。
+- `python tools/play_air_supply.py --speed 200`：接管 40 单位、带 AH-1F 的当前战局，从第 1 回合打到第 16 回合“立即占领敌首都”，剩 38/40，rank 2，9300 P。T8 出现一次 MANUAL_WAIT，原生调用自行返回后 MANUAL_RESUMED，未自动按 A。补给链日志可见 AX_SUPPLY/AIR_BASE_REFILL/AIR_DEPOT_SWAP/AIR_RETURN_TRUCK 正常工作。
+- 产物：states/current_air_20261101_203415_{handoff,t15,victory}.State、shots/air_supply/trajectory.html；发布视频由 tools/make_release_video.py 从 shots/first_clear/frames 重编码为 media/highlight.mp4。
+
+build_air_supply.py 当前自报版本为 air-supply-v9（早前各条记录停在 v5，属文档滞后）。离线检查仍需在改动生成器后重跑。
+
+## 历史：air-supply-v5，修复非战场界面启动被误拒绝
 
 用户反馈一启动即bug，logs/air_supply.txt FATAL stale bridge is outside player map。air_bridge_recover原先要求CTX7/1，错误阻止在选择/详情/部署界面回收本项目已知空闲桥。v5删除场景限制，仍严格验证hook目标、完整stub与mailbox非busy；额外处理读存档后RAM代码区全部为空而ROM仍留原桥跳转的情况，仅恢复8字节ROM入口，不写空RAM。未知代码、busy2仍拒绝回收。
 
