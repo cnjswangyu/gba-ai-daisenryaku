@@ -9,6 +9,7 @@
 | `trajectory_t8.png` | 同一页面第 8 回合、双方全部单位 |
 | `trajectory.html` | 2026-11-01 air-supply 战局的可交互轨迹（自包含，无外部依赖） |
 | `highlight.mp4` | 片头卡 + 第 2/3 回合战斗片段 + 胜利结算，720×480，H.264 |
+| `social_preview.png` | 1280×640 链接预览卡（上传到 GitHub Settings → Social preview） |
 
 `highlight.mp4` 由 `tools/make_release_video.py` 从 `shots/first_clear/frames/`
 的原始帧重新编码生成；截图与 GIF 均来自模拟器自身输出，没有后期合成战斗画面。
