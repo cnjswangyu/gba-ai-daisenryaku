@@ -1,0 +1,32 @@
+# --- emulator runtime (BizHawk, ~390 MB) ---
+/tools/**
+!/tools/*.py
+!/tools/*.ps1
+!/tools/ghidra_scripts/
+!/tools/ghidra_scripts/**
+!/tools/README.md
+
+# --- copyrighted game content: never redistribute ---
+/roms/
+/states/
+/lua/unitdb.tsv
+/docs/units.csv
+*.gba
+*.sav
+*.State
+*.zip
+
+# --- run artifacts ---
+/logs/
+/shots/
+__pycache__/
+*.pyc
+.workbuddy/
+/ref/
+/_ref/
+
+# --- local scratch ---
+/media/_*
+/tools/config.ini
+/tools/defctrl.json
+/.claude/
